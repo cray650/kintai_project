@@ -1,7 +1,9 @@
 <%= form_with model: @time_card, local: true do |f| %>
+  <%= f.hidden_field :year, :value => @year%>
+  <%= f.hidden_field :month, :value => @month%>
+  <%= f.hidden_field :day, :value => @day%>
     <div class="circle-attend">
-      <%= f.time_field :in%>
-      <%= f.submit "出社" ,class:"a" %>
+       <%= f.hidden_field :in, :value => %>
     </div>
     <div class="circle-leave">
       <%= f.time_field :out%>
