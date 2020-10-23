@@ -1,0 +1,10 @@
+<%= form_with model: @time_card, local: true do |f| %>
+    <div class="circle-attend">
+      <%= f.time_field :in%>
+      <%= f.submit "出社" ,class:"a" %>
+    </div>
+    <div class="circle-leave">
+      <%= f.time_field :out%>
+      <%= f.submit "退社" ,class:"a" %>
+    </div>
+<% end %>
