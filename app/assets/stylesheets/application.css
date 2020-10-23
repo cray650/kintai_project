@@ -39,8 +39,12 @@
 .header-side{
   position: absolute;
   right: 40px;
-  top: 40px;
+  top: 20px;
   font-size: 20px;
+}
+.user-edit{
+  text-decoration: none;
+  color: lightseagreen;
 }
 
 
