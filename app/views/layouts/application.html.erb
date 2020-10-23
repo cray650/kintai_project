@@ -23,5 +23,11 @@
       </div>
     </header>
     <%= yield %>
+     <div class="header-side">
+        <% if user_signed_in? %>
+          <%= link_to current_user.firstname + current_user.lastname, edit_user_registration_path, class: "user-edit"%><br>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout"  %>
+        <% end %>
+    </div>
   </body>
 </html>
