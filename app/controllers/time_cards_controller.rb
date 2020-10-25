@@ -1,9 +1,11 @@
 class TimeCardsController < ApplicationController
   
   def index
+    date = Date.today
     @year = Time.current.year
     @month = Time.current.month
-    @day = Time.current.day
+    @start_date = date.beginning_of_month.to_s
+    @end_date = date.end_of_month.to_s
   end
 
   def new

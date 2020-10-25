@@ -1,7 +1,4 @@
-<h1><%= "#{@year}年#{@month}月" %></h1>
-
-<h1>出勤簿</h1>
-<h1 class="header-sub"><%= "#{@year}/#{@month}/#{@day}"%></h1>
+<h1><%= "#{@year}年#{@month}月  出勤簿" %></h1>
 
 <div class="table">
   <table border="1">
@@ -15,17 +12,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><%="#{month}"%></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>大阪</td>
-        <td>Osaka</td>
-      </tr>
+      <%(Date.parse("#{@start_date}")..Date.parse("#{@end_date}")).each do |date| %>
+        <tr>
+            <td><%="#{date.month}月#{date.day}日"%></td>
+            <td><%= %w[日 月 火 水 木 金 土][date.wday] %></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    <%end%>
     </tbody>
 </table>
 </div>
