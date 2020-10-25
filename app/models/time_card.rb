@@ -1,6 +1,4 @@
 class TimeCard < ApplicationRecord
-<<<<<<< Updated upstream
-=======
   belongs_to :user
 
   with_options presence: true do 
@@ -20,7 +18,4 @@ class TimeCard < ApplicationRecord
         :left # 退社済
     end
   end
-
-
->>>>>>> Stashed changes
 end

@@ -1,7 +1,6 @@
 class TimeCardsController < ApplicationController
+  
   def index
-<<<<<<< Updated upstream
-=======
     @year = Time.current.year
     @month = Time.current.month
     @day = Time.current.day
@@ -27,6 +26,5 @@ class TimeCardsController < ApplicationController
   private
   def time_card_params
     params.require(:time_card).permit(:year, :month, :day, :in, :out).merge(user_id: current_user.id)
->>>>>>> Stashed changes
   end
 end

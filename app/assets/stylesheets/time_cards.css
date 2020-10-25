@@ -1,4 +1,6 @@
 h1{
+  text-align: left;
+=======
   text-align: center;
 }
 .header-sub, .time-count{
