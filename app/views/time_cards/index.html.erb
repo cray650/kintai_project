@@ -1,2 +1,31 @@
 <h1><%= "#{@year}年#{@month}月" %></h1>
 
+<h1>出勤簿</h1>
+<h1 class="header-sub"><%= "#{@year}/#{@month}/#{@day}"%></h1>
+
+<div class="table">
+  <table border="1">
+    <thead>
+      <tr>
+        <th>日付</th>
+        <th>曜日</th>
+        <th>出社時間</th>
+        <th>退社時間</th>
+        <th>勤務時間</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%="#{month}"%></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>大阪</td>
+        <td>Osaka</td>
+      </tr>
+    </tbody>
+</table>
+</div>

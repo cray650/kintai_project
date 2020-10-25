@@ -1,3 +1,7 @@
+<h1>タイムカード</h1>
+<p class="header-sub"><%= "#{@year}/#{@month}/#{@day}"%></p>
+<p class="time-count"><%= "#{@time.hour}:#{@time.min}"%></p>
+<div class="new-main">
 <%= form_with model: @time_card, local: true do |f| %>
   <%= f.hidden_field :year, :value => @year%>
   <%= f.hidden_field :month, :value => @month%>
@@ -10,3 +14,17 @@
       <%= f.submit "退社" ,class:"a" %>
     </div>
 <% end %>
+  <%# 項目に入力される時間が同じになってしまうため、それぞれの時間が入力できるようにする必要がある。%>
+    <div class="circle-attend">
+       <%= f.hidden_field :in, :value => @time%>
+       <%= f.submit "出社" ,class:"a" %>
+    </div>
+    <div class="circle-leave">
+      <%= f.hidden_field :out, :value => @time%>
+      <%= f.submit "退社" ,class:"a" %>
+    </div>
+    <div class="main-menu">
+      <a href="/time_cards">出勤簿画面へ</a>
+    </div>
+<% end %>
+</div>
