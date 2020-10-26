@@ -4,8 +4,7 @@ class TimeCard < ApplicationRecord
   with_options presence: true do 
     validates :year
     validates :month
-    validates :in
-    validates :out
+    validates :day
   end
 
   def working_status
@@ -18,5 +17,4 @@ class TimeCard < ApplicationRecord
         :left # 退社済
     end
   end
-  
 end
