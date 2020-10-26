@@ -16,25 +16,19 @@
         <tr>
           <td><%="#{date.month}月#{date.day}日"%></td>
           <td><%= %w[日 月 火 水 木 金 土][date.wday] %></td>
-          <%# if @time_cards ==  %>
             <% @time_cards.each do |time_card| %>
-              <%if time_card.day == date.day %>
+              <% if time_card.day == date.day %>
                 <td><%= "#{time_card.in.hour}:#{time_card.in.min}" %></td>
-              <% end %>
-              <% if time_card.out == presence %>
-                <td><%= "#{time_card.out.hour}:#{time_card.out.min}" %></td>
-              <% end %>
-              <% if  %>
-                <td><%="#{time_card.out.hour - time_card.in.hour}:#{time_card.out.min - time_card.in.min}"%></td>
+                <% if time_card.out == presence %>
+                  <td><%= "#{time_card.out.hour}:#{time_card.out.min}" %></td>
+                <% end %>
               <% end %>
             <% end %>
-          <%# else %>
-            <td></td>
-            <td></td>
-            <td></td>
-          <%# end %>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
-    <%end%>
+      <%end%>
     </tbody>
 </table>
 </div>
