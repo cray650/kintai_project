@@ -18,4 +18,5 @@ class TimeCard < ApplicationRecord
         :left # 退社済
     end
   end
+  
 end

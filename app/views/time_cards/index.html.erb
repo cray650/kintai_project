@@ -1,7 +1,7 @@
 <h1><%= "#{@year}年#{@month}月  出勤簿" %></h1>
 
 <div class="table">
-  <table border="1">
+  <table border="1" align="center">
     <thead>
       <tr>
         <th>日付</th>
@@ -16,9 +16,17 @@
         <tr>
             <td><%="#{date.month}月#{date.day}日"%></td>
             <td><%= %w[日 月 火 水 木 金 土][date.wday] %></td>
+      <% @time_cards.each do |time_card| %>
+          <%if time_card.day == date.day %>
+            <td><%= "#{time_card.in.hour}:#{time_card.in.min}" %></td>
+            <td><%= "#{time_card.out.hour}:#{time_card.out.min}" %></td>
+            <td><%="#{time_card.out.hour - time_card.in.hour}:#{time_card.out.min - time_card.in.min}"%></td>
+          <% else %>
             <td></td>
             <td></td>
             <td></td>
+          <% end %>
+       <% end %>
         </tr>
     <%end%>
     </tbody>

@@ -6,6 +6,7 @@ class TimeCardsController < ApplicationController
     @month = Time.current.month
     @start_date = date.beginning_of_month.to_s
     @end_date = date.end_of_month.to_s
+    @time_cards =TimeCard.all
   end
 
   def new
@@ -18,11 +19,20 @@ class TimeCardsController < ApplicationController
 
   def create
     @time_card = TimeCard.new(time_card_params)
+
+    if params[:in]
+      @time_card.in = Time.now
+    elsif params[:out]
+      @time_card.out = Time.now
+    end
+
+=begin
     if @time_card.save
       render :index
     else
       redirct_to  new_time_card_path
     end
+=end
   end
 
   private
