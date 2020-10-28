@@ -48,7 +48,7 @@ class TimeCardsController < ApplicationController
     @year = Time.current.year
     @month = Time.current.month
     @day = Time.current.day
-    @time = Time.current
+    @time = Time.zone.now
     @time_cards =TimeCard.all
   end
 
