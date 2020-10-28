@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2020_10_23_034332) do
     t.integer "year", null: false
     t.integer "month", null: false
     t.integer "day", null: false
-    t.datetime "in", null: false
-    t.datetime "out", null: false
+    t.datetime "in"
+    t.datetime "out"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

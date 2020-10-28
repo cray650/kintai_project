@@ -1,24 +1,69 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Name
 
-Things you may want to cover:
+勤怠管理システム「KINTAI」
 
-* Ruby version
+# 概要
 
-* System dependencies
+Ruby on Railsを使用した、勤怠管理システムです。社員の勤怠時間の管理をすることができます。
 
-* Configuration
+# URL
 
-* Database creation
+# 一般用アカウント
+メールアドレス : sample@sample.com  
+パスワード    : 1111aa
 
-* Database initialization
+# 利用方法
+ログイン後、出勤、退勤ボタンを押すことで、出勤時間と退勤時間を確認することができます。
 
-* How to run the test suite
+# 目指した課題解決
+営業職では
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+
+
+
+
+
+
+
+
+
+
+
+
+#テーブル設計
+
+## users テーブル
+
+| Column      | Type   | Options     |
+| ----------- | ------ | ----------- |
+| employee_id | string | null: false |
+| firstname   | string | null: false |
+| lastname    | string | null: false |
+| email       | string | null: false |
+| password    | string | null: false |
+
+### Association
+
+- has_many  :time_cards
+
+## time_cards テーブル
+
+| Column | Type     | Options     |
+| ------ | -------- | ----------- |
+| year   | integer  | null: false |
+| month  | integer  | null: false |
+| day    | integer  | null: false |
+| in     | datetime |             |
+| out    | datetime |             |
+
+### Association
+
+- belongs_to :user
+
+
+
+
