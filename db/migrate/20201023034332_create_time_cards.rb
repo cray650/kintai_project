@@ -4,8 +4,8 @@ class CreateTimeCards < ActiveRecord::Migration[6.0]
       t.integer :year,          null: false
       t.integer :month,         null: false
       t.integer :day,           null: false
-      t.datetime :in,           null: false
-      t.datetime :out,          null: false
+      t.datetime :in
+      t.datetime :out
 
       t.references :user,       foreign_key: true
 

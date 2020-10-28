@@ -1,0 +1,19 @@
+<h1>タイムカード</h1>
+<p class="header-sub"><%= "#{@year}/#{@month}/#{@day}"%></p>
+<p class="time-count"><%= "#{@time.hour}:#{@time.min}"%></p>
+<div class="new-main">
+<%= form_with model: @time_card, local: true do |f| %>
+  <%= f.hidden_field :year, value: @year%>
+  <%= f.hidden_field :month, value: @month%>
+  <%= f.hidden_field :day, value: @day%>
+      <div class="circle-attend">
+      </div>
+      <div class="circle-leave">
+        <%= f.hidden_field :out, value: @time %>
+        <%= f.submit "退社" ,class:"a", id:"out-submit" %>
+      </div>
+      <div class="main-menu">
+        <a href="/time_cards">出勤簿画面へ</a>
+      </div>
+<% end %>
+</div>

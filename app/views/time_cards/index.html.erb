@@ -1,10 +1,8 @@
-<h1><%= "#{@year}年#{@month}月" %></h1>
-
-<h1>出勤簿</h1>
-<h1 class="header-sub"><%= "#{@year}/#{@month}/#{@day}"%></h1>
+<h1><%= "#{@year}年#{@month}月  出勤簿" %></h1>
+<%#<h2 class="edit"><%= link_to '編集', edit_time_card_path %></h2> 
 
 <div class="table">
-  <table border="1">
+  <table border="1" align="center">
     <thead>
       <tr>
         <th>日付</th>
@@ -15,17 +13,29 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><%="#{month}"%></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>大阪</td>
-        <td>Osaka</td>
-      </tr>
+      <%(Date.parse("#{@start_date}")..Date.parse("#{@end_date}")).each do |date| %>
+        <tr>
+          <td><%="#{date.month}月#{date.day}日"%></td>
+          <td><%= %w[日 月 火 水 木 金 土][date.wday] %></td>
+            <% @time_cards.each do |time_card| %>
+              <% if time_card.day == date.day && time_card.user_id == current_user.id && time_card.in.present? %>
+                <td><%= "#{time_card.in.hour}:#{time_card.in.min}" %></td>
+             <% else %>
+                <td></td>
+              <% end %>
+              <% if time_card.day == date.day && time_card.user_id == current_user.id && time_card.out.present? %>
+                <td><%= "#{time_card.out.hour}:#{time_card.out.min}" %></td>
+              <% else %>
+                <td></td>
+              <% end %>
+              <% if time_card.day == date.day && time_card.user_id == current_user.id %>
+                <td><%= "#{time_card.out.hour - time_card.in.hour}:#{time_card.out.min - time_card.in.min}"%></td>
+              <% else %>
+                <td></td>
+              <% end %>
+            <% end %>
+        </tr>
+      <% end %>
     </tbody>
 </table>
 </div>
