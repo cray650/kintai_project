@@ -6,8 +6,9 @@
   <%= f.hidden_field :year, value: @year%>
   <%= f.hidden_field :month, value: @month%>
   <%= f.hidden_field :day, value: @day%>
+  <%# あとはここの条件分岐を完了すれば、勤怠打刻機能は実装完了 %>
   <%# 項目に入力される時間が同じになってしまうため、それぞれの時間が入力できるようにする必要がある。%>
-    <%# if @today_card.nil? %>
+    <% unless @today_card.present? %>
       <div class="circle-attend">
         <%= f.hidden_field :in, value: @time %>
         <%= f.submit "出社" ,class:"a", id:"in-submit" %>
@@ -16,8 +17,16 @@
         <%= f.hidden_field :out, value: nil %>
         <%= f.submit "退社" ,class:"a", id:"out-submit" %>
       </div>
-    <%# else  %>  <%# 下の場合は、updateを行うようにする、　参照：　https://qiita.com/shell/items/c9869809cba91e9c35a1%>
-    <%# end %>
+    <% else  %>
+      <div class="circle-attend">
+       <%= f.hidden_field :in %>
+        <%= f.submit "出社" ,class:"a", id:"in-submit" %>
+      </div>
+      <div class="circle-leave">
+        <%= f.hidden_field :out, value: @time %>
+        <%= f.submit "退社" ,class:"a", id:"out-submit" %>
+      </div>
+    <% end %>
       <div class="main-menu">
         <a href="/time_cards">出勤簿画面へ</a>
       </div>

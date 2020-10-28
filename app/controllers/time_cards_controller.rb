@@ -12,12 +12,13 @@ class TimeCardsController < ApplicationController
 
   def new
     @today_card = TimeCard.where(year: @year, month: @month, day: @day, user_id: current_user.id)
-    @time_card = TimeCard.new
+    @time_card = TimeCard.today(current_user)
   end
 
   def create
+    @today_card = TimeCard.where(year: @year, month: @month, day: @day, user_id: current_user.id)
     @time_card = TimeCard.new(time_card_params)
-
+   
     if @time_card.save
       redirect_to time_cards_path
     else
@@ -36,12 +37,8 @@ class TimeCardsController < ApplicationController
     end
   end
 
-  def delete
-  end
-
-  
-
   private
+
   def time_card_params
     params.require(:time_card).permit(:year, :month, :day, :in, :out).merge(user_id: current_user.id)
   end
