@@ -1,4 +1,4 @@
-h1{
+h1, .edit{
   text-align: left;
   text-align: center;
 }
@@ -43,10 +43,10 @@ h1{
 .main-menu{
   border: 1px solid lightgray;
 }
-.table{
+table{
   text-align: center;
   border-collapse: collapse;
-  width: 100%;
+  width: 70%;
   table-layout: fixed;
 }
 .table th{

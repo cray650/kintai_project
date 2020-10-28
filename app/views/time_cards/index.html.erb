@@ -1,4 +1,5 @@
 <h1><%= "#{@year}年#{@month}月  出勤簿" %></h1>
+<h2 class="edit"><%= link_to '編集', edit_time_card_path() %></h2>
 
 <div class="table">
   <table border="1" align="center">
@@ -17,18 +18,19 @@
           <td><%="#{date.month}月#{date.day}日"%></td>
           <td><%= %w[日 月 火 水 木 金 土][date.wday] %></td>
             <% @time_cards.each do |time_card| %>
-              <% if time_card.day == date.day %>
+              <% if time_card.day == date.day && time_card.user_id == current_user.id && time_card.in.present? %>
                 <td><%= "#{time_card.in.hour}:#{time_card.in.min}" %></td>
-                <% if time_card.out == presence %>
-                  <td><%= "#{time_card.out.hour}:#{time_card.out.min}" %></td>
-                <% end %>
+              <% elsif time_card.day == date.day && time_card.user_id == current_user.id && time_card.in.nil? %>
+                <td></td>
+              <% end %>
+              <% if time_card.day == date.day && time_card.user_id == current_user.id && time_card.out.present? %>
+                <td><%= "#{time_card.out.hour}:#{time_card.out.min}" %></td>
+              <% elsif time_card.day == date.day && time_card.user_id == current_user.id && time_card.out.nil? %>
+                <td></td>
               <% end %>
             <% end %>
-          <td></td>
-          <td></td>
-          <td></td>
         </tr>
-      <%end%>
+      <% end %>
     </tbody>
 </table>
 </div>
