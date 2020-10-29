@@ -1,6 +1,6 @@
 <h1>タイムカード</h1>
 <p class="header-sub"><%= "#{@year}/#{@month}/#{@day}"%></p>
-<p class="time-count"><%= "#{@time.hour}:#{@time.min}"%></p>
+<p class="time-count" id="RealtimeClockArea"></p>
 <div class="new-main">
 <%= form_with model: @time_card, local: true do |f| %>
   <%= f.hidden_field :year, value: @year%>
