@@ -44,7 +44,7 @@
                 <td><%= "#{time_card.out.hour}:#{time_card.out.min}" %></td>
               <% end %>
               <% if time_card.day == date.day && time_card.user_id == current_user.id && time_card.in.present? && time_card.out.present?  %>
-                <td><%= "#{Time.at(time_card.out - time_card.in).utc.strftime("%X")} "%></td>
+                <td><%= "#{Time.at(time_card.out - time_card.in).utc.strftime("%H:%M")} "%></td>
               <% end %>
             <% end %>
         </tr>
