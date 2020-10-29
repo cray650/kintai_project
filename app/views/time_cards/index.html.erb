@@ -2,7 +2,25 @@
 <%#<h2 class="edit"><%= link_to '編集', edit_time_card_path %></h2> 
 
 <div class="table">
-  <table border="1" align="center">
+  <div class="table2">
+  <table border="1" class="header-table">
+    <thead>
+      <tr>
+      <th>予定勤務日数</th>
+      <th>予定勤務時間</th>
+      <th>実勤務日数</th>
+      <th>実勤務時間</th>
+      </tr>
+    </thead>
+    <tbody>
+      <td>20</td>
+      <td>170</td>
+      <td>15</td>
+      <td>130</td>
+    </tbody>
+  </table>
+</div>
+  <table border="1" align="center" class="main-table">
     <thead>
       <tr>
         <th>日付</th>
@@ -10,6 +28,7 @@
         <th>出社時間</th>
         <th>退社時間</th>
         <th>勤務時間</th>
+        <th>勤務予定時間</th>
       </tr>
     </thead>
     <tbody>
@@ -27,10 +46,10 @@
               <% if time_card.day == date.day && time_card.user_id == current_user.id && time_card.in.present? && time_card.out.present?  %>
                 <td><%= "#{Time.at(time_card.out - time_card.in).utc.strftime("%X")} "%></td>
               <% end %>
-
             <% end %>
         </tr>
       <% end %>
     </tbody>
 </table>
+
 </div>
