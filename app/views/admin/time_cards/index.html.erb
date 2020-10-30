@@ -1,0 +1,55 @@
+<h1><%= "#{@year}年#{@month}月  出勤簿" %></h1>
+<%#<h2 class="edit"><%= link_to '編集', edit_time_card_path %></h2> 
+
+<div class="table">
+  <div class="table2">
+  <table border="1" class="header-table">
+    <thead>
+      <tr>
+      <th>予定勤務日数</th>
+      <th>予定勤務時間</th>
+      <th>実勤務日数</th>
+      <th>実勤務時間</th>
+      </tr>
+    </thead>
+    <tbody>
+      <td>20</td>
+      <td>170</td>
+      <td>15</td>
+      <td>130</td>
+    </tbody>
+  </table>
+</div>
+  <table border="1" align="center" class="main-table">
+    <thead>
+      <tr>
+        <th>日付</th>
+        <th>曜日</th>
+        <th>出社時間</th>
+        <th>退社時間</th>
+        <th>勤務時間</th>
+        <th>勤務予定時間</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%(Date.parse("#{@start_date}")..Date.parse("#{@end_date}")).each do |date| %>
+        <tr>
+          <td><%="#{date.month}月#{date.day}日"%></td>
+          <td><%= %w[日 月 火 水 木 金 土][date.wday] %></td>
+            <% @time_cards.each do |time_card| %>
+              <% if time_card.day == date.day && time_card.user_id == current_user.id && time_card.in.present? %>
+                <td><%= "#{time_card.in.hour}:#{time_card.in.min}" %></td>
+              <% end %>
+              <% if time_card.day == date.day && time_card.user_id == current_user.id && time_card.out.present? %>
+                <td><%= "#{time_card.out.hour}:#{time_card.out.min}" %></td>
+              <% end %>
+              <% if time_card.day == date.day && time_card.user_id == current_user.id && time_card.in.present? && time_card.out.present?  %>
+                <td><%= "#{Time.at(time_card.out - time_card.in).utc.strftime("%H:%M")} "%></td>
+              <% end %>
+            <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+
+</div>
