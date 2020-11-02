@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :time_cards
     end
+  resources :requests
+
 end
