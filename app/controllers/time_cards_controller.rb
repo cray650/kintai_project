@@ -5,6 +5,7 @@ class TimeCardsController < ApplicationController
   before_action :move_to_index, only: :edit
 
   def index
+    @requests = Request.includes(:time_card)
     date = Date.today
     @start_date = date.beginning_of_month.to_s
     @end_date = date.end_of_month.to_s
