@@ -5,7 +5,6 @@ class RequestsController < ApplicationController
   end
 
   def create
-    binding.pry
     @request = Request.new(request_params)
     if @request.save
       redirect_to time_cards_path

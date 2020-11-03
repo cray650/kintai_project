@@ -38,10 +38,10 @@
           <td><%= %w[日 月 火 水 木 金 土][date.wday] %></td>
             <% @time_cards.each do |t| %>
               <% if t.day == date.day && t.user_id == current_user.id && t.in.present? %>
-                <td><%= "#{t.in.hour}:#{t.in.min}" %></td>
+                <td><%= "#{t.in.hour}:#{Time.at(t.in.min).utc.strftime("%M")}" %></td>
               <% end %>
               <% if t.day == date.day && t.user_id == current_user.id && t.out.present? %>
-                <td><%= "#{t.out.hour}:#{t.out.min}" %></td>
+                <td><%= "#{t.out.hour}:#{Time.at(t.out.min).utc.strftime("%M")}" %></td>
               <% end %>
               <% if t.day == date.day && t.user_id == current_user.id && t.in.present? && t.out.present?  %>
                 <td><%= "#{Time.at(t.out - t.in).utc.strftime("%H:%M")} "%></td>
