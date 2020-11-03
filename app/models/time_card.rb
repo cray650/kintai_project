@@ -1,5 +1,7 @@
 class TimeCard < ApplicationRecord
   belongs_to :user
+  belongs_to :request, optional: true
+
 
   with_options presence: true do 
     validates :year

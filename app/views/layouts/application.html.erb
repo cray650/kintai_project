@@ -15,19 +15,19 @@
         <div class="title">
           <%= link_to 'KINTAI', root_path, class: "btn"  %>
         </div>
-        <div class="header-side">
-          <%# if user_signed_in? %>
-            <%#= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout"  %>
-          <%# end %>
-        </div>
       </div>
     </header>
     <%= yield %>
+        <div class="request-bar">
+            <a href="/requests/new">申請</a>
+        </div>
+
      <div class="header-side">
         <% if user_signed_in? %>
           <%= link_to current_user.firstname + current_user.lastname, edit_user_registration_path, class: "user-edit"%><br>
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout"  %>
         <% end %>
-    </div>
+     </div>
+
   </body>
 </html>

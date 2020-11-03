@@ -1,0 +1,37 @@
+<h1>各種申請</h1>
+<%= form_for @request do |f| %>
+<div class="r-header">
+  <div class="r-type">
+    <p>申請区分</p>
+    <%= f.collection_select(:type_id, Type.all, :id, :name, {}, {class:"select-box", id:"type-status"}) %>
+  </div>
+  <%= f.fields_for :time_card do |i| %>
+    <div class="r-day">
+      <p>申請適用日</p>
+      <%= i.text_field :year, placeholder:"年" %>
+      <%= i.text_field :month, placeholder:"月" %>
+      <%= i.text_field :day, placeholder:"日" %>
+    </div>
+    <div class="r-in">
+      <p>出勤時刻</p>
+      <%= i.time_field :in, value: "%H:%M" %>
+    </div>
+    <div class="r-out">
+      <p>退勤時刻</p>
+      <%= i.time_field :out, value: "%H:%M" %>
+    </div>
+    <%= i.hidden_field :user_id, value: current_user.id %>
+  <% end %>
+  <div class="r-comment">
+    <p>事由</p>
+    <%= f.text_field :reason %>
+  </div>
+  <a href="#">確認</a>
+  <div>
+    <%= f.submit "申請" %>
+  </div>
+</div>
+<% end %>
+<div class="main-menu">
+  <a href="/time_cards">出勤簿画面へ</a>
+</div>
