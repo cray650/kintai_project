@@ -29,5 +29,11 @@
     <div class="main-menu">
       <a href="/time_cards">出勤簿画面へ</a>
     </div>
+
+    <% if current_user.admin? %>
+      <div class="main-menu">
+        <a href="/admin/users">ユーザー管理画面へ</a>
+      </div>
+    <% end %>
 <% end %>
 </div>
