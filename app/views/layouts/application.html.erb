@@ -13,15 +13,15 @@
   <header class="header">
       <div class="header-main">
         <div class="title">
+        <% if @user || current_user.admin?%>
+          <%= link_to 'KINTAI', new_admin_time_card_path, class: "btn"  %>
+        <% else %>
           <%= link_to 'KINTAI', root_path, class: "btn"  %>
+        <% end %>
         </div>
       </div>
     </header>
     <%= yield %>
-        <div class="request-bar">
-            <a href="/requests/new">申請</a>
-        </div>
-
      <div class="header-side">
         <% if user_signed_in? %>
           <%= link_to current_user.firstname + current_user.lastname, edit_user_registration_path, class: "user-edit"%><br>

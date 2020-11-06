@@ -1,0 +1,38 @@
+<h1>従業員一覧</h1>
+<div class="request-bar">
+  <a href=" /admin/users/new">新規登録</a>
+</div>
+<table border="1" align="center" class="main-table">
+    <thead>
+      <tr>
+        <th>社員ID</th>
+        <th>氏名</th>
+        <th>email</th>
+        <th>権限</th>
+        <th>出勤状況</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |u| %>
+        <tr>
+          <td><%= "#{u.employee_id}" %></td>
+          <td><%= "#{u.firstname} #{u.lastname}" %></td>
+          <td><%= "#{u.email}" %></td>
+          <% if u.admin == false %>
+            <td><%= "一般ユーザー" %></td>
+          <% else %>
+            <td><%= "管理者ユーザー" %></td>
+          <% end %>
+          <% u.time_cards.each do |t| %>
+            <% if t.day == @day && t.out.present? %>
+              <td class="state-out">退社</td>
+            <% elsif t.day == @day && t.in.present? %>
+              <td class="state-in">出社</td>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+
+

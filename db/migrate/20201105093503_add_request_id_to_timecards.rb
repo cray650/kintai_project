@@ -1,4 +1,4 @@
-class AddRequestIdToTimeCards < ActiveRecord::Migration[6.0]
+class AddRequestIdToTimecards < ActiveRecord::Migration[6.0]
   def change
     add_reference :time_cards, :request, foreign_key: true
   end

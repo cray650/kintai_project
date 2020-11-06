@@ -4,3 +4,15 @@
   font-size: 50px;
   text-align: center;
 }
+.r-table{
+  text-align: center;
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 80%
+}
+.r-table th{
+  background-color: turquoise;
+}
+.edit-page{
+  text-align: center;
+}

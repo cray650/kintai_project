@@ -28,7 +28,7 @@
         <th>出社時間</th>
         <th>退社時間</th>
         <th>勤務時間</th>
-        <th>勤務予定時間</th>
+        <th>備考</th>
       </tr>
     </thead>
     <tbody>
@@ -36,15 +36,22 @@
         <tr>
           <td><%="#{date.month}月#{date.day}日"%></td>
           <td><%= %w[日 月 火 水 木 金 土][date.wday] %></td>
-            <% @time_cards.each do |time_card| %>
-              <% if time_card.day == date.day && time_card.user_id == current_user.id && time_card.in.present? %>
-                <td><%= "#{time_card.in.hour}:#{time_card.in.min}" %></td>
+            <% @time_cards.each do |t| %>
+              <% if t.day == date.day && t.user_id == current_user.id && t.in.present? %>
+                <td><%= "#{t.in.hour}:#{(t.in.min)}" %></td>
               <% end %>
-              <% if time_card.day == date.day && time_card.user_id == current_user.id && time_card.out.present? %>
-                <td><%= "#{time_card.out.hour}:#{time_card.out.min}" %></td>
+              <% if t.day == date.day && t.user_id == current_user.id && t.out.present? %>
+                <td><%= "#{t.out.hour}:#{(t.out.min)}" %></td>
               <% end %>
-              <% if time_card.day == date.day && time_card.user_id == current_user.id && time_card.in.present? && time_card.out.present?  %>
-                <td><%= "#{Time.at(time_card.out - time_card.in).utc.strftime("%H:%M")} "%></td>
+              <% if t.day == date.day && t.user_id == current_user.id && t.in.present? && t.out.present?  %>
+                <td><%= "#{Time.at(t.out - t.in).utc.strftime("%H:%M")} "%></td>
+              <% end %>
+              <% @requests.each do |r|%>
+                <% if r.time_card.day == date.day && r.user_id == current_user.id && t.request_id == r.id && r.approval.present? %>
+                  <td><%= "#{r.reason}" %></td>
+                <% elsif  r.time_card.day == date.day && r.user_id == current_user.id && t.request_id == r.id %>
+                  <td class='now-request'>申請中(<%= "#{r.reason}" %>)</td>
+                <% end %>
               <% end %>
             <% end %>
         </tr>
