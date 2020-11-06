@@ -8,7 +8,6 @@ class CreateTimeCards < ActiveRecord::Migration[6.0]
       t.datetime    :out
 
       t.references  :user,     foreign_key: true
-      t.references  :request,  foreign_key: true
 
       t.timestamps
     end

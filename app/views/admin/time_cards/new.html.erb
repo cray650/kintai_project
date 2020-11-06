@@ -1,6 +1,9 @@
 <h1>タイムカード</h1>
 <p class="header-sub"><%= "#{@year}/#{@month}/#{@day}"%></p>
 <p class="time-count" id="RealtimeClockArea"></p>
+<div class="request-bar">
+  <a href="/requests/new">申請</a>
+</div>
 <div class="new-main">
 <%= form_with model: @time_card, local: true do |f| %>
   <%= f.hidden_field :year, value: @year%>
@@ -29,7 +32,7 @@
         <a href="/admin/time_cards">出勤簿画面へ</a>
       </div>
       <div class="main-menu">
-        <a href="/admin/users">ユーザー管理画面へ</a>
+        <a href="/admin/users">従業員管理画面へ</a>
       </div>
 
 <% end %>

@@ -1,0 +1,45 @@
+<h1>承認画面</h1>
+<div class="edit-page">
+<%= form_with url: admin_request_path, local: true, method: :patch do |r| %>
+  <div>
+     <p>従業員ID<p>
+  </div>
+  <div>
+     <h2><%= "#{@request.user.employee_id}"%><h2>
+  </div>
+  <div>
+     <p>氏名<p>
+  </div>
+  <div>
+     <h2><%= "#{@request.user.firstname} #{@request.user.lastname}"%><h2>
+  </div>
+  <div>
+     <p>申請適用日<p>
+  </div>
+  <div>
+    <h2><%= "#{@request.time_card.month}/#{@request.time_card.day}"%><h2>
+  </div>
+  <div>
+     <p>事由<p>
+  </div>
+  <div>
+    <h2><%= "#{@request.reason}"%><h2>
+  </div>
+  <div>
+     <p>出勤時刻<p>
+  </div>
+  <div>
+    <h2><%= "#{(@request.time_card.in).strftime("%H:%M")}"%><h2>
+  </div>
+  <div>
+     <p>退勤時刻<p>
+  </div>
+  <div>
+    <h2><%= "#{(@request.time_card.out).strftime("%H:%M")}"%><h2>
+  </div>
+  <div>
+    <%= r.hidden_field :approval, value: true %>
+    <a><%= r.submit "承認" %></a>
+
+  </div>
+<% end %>

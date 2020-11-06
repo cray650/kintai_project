@@ -12,8 +12,7 @@ class RequestsController < ApplicationController
       render :new
     end
   end
-
-
+  
   private
   
   def request_params

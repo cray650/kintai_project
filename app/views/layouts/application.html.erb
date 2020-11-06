@@ -22,10 +22,6 @@
       </div>
     </header>
     <%= yield %>
-      <div class="request-bar">
-        <a href="/requests/new">申請</a>
-      </div>
-
      <div class="header-side">
         <% if user_signed_in? %>
           <%= link_to current_user.firstname + current_user.lastname, edit_user_registration_path, class: "user-edit"%><br>

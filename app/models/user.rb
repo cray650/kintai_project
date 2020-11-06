@@ -6,4 +6,6 @@ class User < ApplicationRecord
   
   has_many :time_cards, dependent:  :destroy
   has_many :requests,   dependent:  :destroy
+
+
 end
