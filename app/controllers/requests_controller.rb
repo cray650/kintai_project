@@ -1,4 +1,8 @@
 class RequestsController < ApplicationController
+  def index
+    @requests = Request.all
+  end
+
   def new
     @request = Request.new
     @request.build_time_card
@@ -11,6 +15,15 @@ class RequestsController < ApplicationController
     else 
       render :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
   end
   
   private

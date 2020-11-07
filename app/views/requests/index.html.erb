@@ -1,6 +1,6 @@
-<h1>未処理申請一覧</h1>
+<h1>申請済み一覧</h1>
 <div>
-  <table border="1" align="center" class="r-table">
+  <table border="1" align="center" class="r-table" >
     <thead>
       <tr>
       <th>申請者ID</th>
@@ -10,13 +10,11 @@
       <th>出勤時刻</th>
       <th>退勤時刻</th>
       <th>承認</th>
-      <th>却下</th>
       </tr>
     </thead>
     <tbody>
-    <%= form_with model: @request, local: true do |f| %>
       <% @requests.each do |r|%>
-        <% if r.approval.nil?%>
+        <% if r.user_id == current_user.id %>
           <tr>
             <td><%= "#{r.user.employee_id}" %></td>
             <td><%= "#{r.user.firstname} #{r.user.lastname}" %></td>
@@ -24,12 +22,9 @@
             <td><%= "#{r.reason}" %></td>
             <td><%= "#{(r.time_card.in).strftime("%H:%M")}" %></td>
             <td><%= "#{(r.time_card.out).strftime("%H:%M")}" %></td>
-            <td><%= link_to '承認', edit_admin_request_path(r.id), method: :get %></td>
-            <td><%= link_to '却下', edit_admin_request_path(r.id), method: :get %></td>
           </tr>
         <% end %>
     <% end %>
     </tbody>
   </table>
-<% end %>
 </div>

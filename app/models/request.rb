@@ -8,6 +8,6 @@ class Request < ApplicationRecord
 
   with_options presence: true do
     validates :type_id, numericality: { other_than: 1 }
-    validates :reason
+    validates :reason,  format: { with: /\A[ぁ-んァ-ン一-龥]/ }
   end
 end

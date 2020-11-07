@@ -3,7 +3,7 @@ class TimeCard < ApplicationRecord
   belongs_to :request, optional: true
 
 
-  with_options presence: true do 
+  with_options presence: true, format: { with: /\A[0-9]+\z/, message: '半角数字を使用してください。'} do 
     validates :year
     validates :month
     validates :day

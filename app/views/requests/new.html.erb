@@ -1,5 +1,9 @@
 <h1>各種申請</h1>
+<div class="request-bar">
+  <a href="/requests">申請済一覧</a>
+</div>
 <%= form_for @request do |f| %>
+ <%= render 'error_messages', model: f.object %>
 <div class="r-header">
   <div class="r-type">
     <p>申請区分</p>
