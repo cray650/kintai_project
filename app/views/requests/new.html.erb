@@ -2,14 +2,14 @@
 <div class="request-bar">
   <a href="/requests">申請済一覧</a>
 </div>
-<%= form_for @request do |f| %>
- <%= render 'error_messages', model: f.object %>
+<%= form_for @request do |r| %>
+ <%= render 'error_messages', model: r.object %>
 <div class="r-header">
   <div class="r-type">
     <p>申請区分</p>
-    <%= f.collection_select(:type_id, Type.all, :id, :name, {}, {class:"select-box", id:"type-status"}) %>
+    <%= r.collection_select(:type_id, Type.all, :id, :name, {}, {class:"select-box", id:"type-status"}) %>
   </div>
-  <%= f.fields_for :time_card do |i| %>
+  <%= r.fields_for :time_card do |i| %>
     <div class="r-day">
       <p>申請適用日</p>
       <%= i.text_field :year, placeholder:"年" %>
@@ -28,11 +28,11 @@
   <% end %>
   <div class="r-comment">
     <p>事由</p>
-    <%= f.text_field :reason %>
+    <%= r.text_field :reason %>
   </div>
   <a href="#">確認</a>
   <div>
-    <%= f.submit "申請" %>
+    <%= r.submit "申請" %>
   </div>
 </div>
 <% end %>

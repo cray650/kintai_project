@@ -63,6 +63,7 @@ table{
 .now-request{
   color: white;
   background-color: red;
+  text-decoration: none;
 }
  /* スマホ表示時 */
  @media (max-width: 599px) {

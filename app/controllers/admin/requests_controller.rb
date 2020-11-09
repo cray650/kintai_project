@@ -1,27 +1,29 @@
 class Admin::RequestsController < ApplicationController
+  before_action :set_request, only: [:edit, :update]
 
   def index
     @requests = Request.all.order(created_at: "ASC")
   end
 
   def edit
-    @request = Request.find(params[:id])
   end
 
   def update
-    request = Request.find(params[:id])
-    if request.update(approval: params[:approval])
+    if params[:approval] = "true"
+      @request.update(approval: "true")
       redirect_to admin_time_cards_path
-    else 
-      render :new
+    elsif params[:approval] = "false"
+      @request.update(approval: "false")
+      redirect_to admin_time_cards_path
+    else
+        render :new
     end
   end
 
   private
 
-=begin
-  def request_params
-    params.require(:request).permit(:approval)
+  def set_request
+    @request = Request.find(params[:id])
   end
-=end
+
 end

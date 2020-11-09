@@ -7,11 +7,17 @@
   border-collapse: collapse;
   table-layout: fixed;
   width: 80%;
-
 }
 .r-table th{
   background-color: turquoise;
 }
 .edit-page{
   text-align: center;
+}
+.now-approving{
+  background-color: skyblue;
+}
+.r-delete{
+  text-decoration: none;
+  color: blue;
 }

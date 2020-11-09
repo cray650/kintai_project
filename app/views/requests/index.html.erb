@@ -9,7 +9,8 @@
       <th>事由</th>
       <th>出勤時刻</th>
       <th>退勤時刻</th>
-      <th>承認</th>
+      <th>申請状況</th>
+      <th>削除</th>
       </tr>
     </thead>
     <tbody>
@@ -22,6 +23,14 @@
             <td><%= "#{r.reason}" %></td>
             <td><%= "#{(r.time_card.in).strftime("%H:%M")}" %></td>
             <td><%= "#{(r.time_card.out).strftime("%H:%M")}" %></td>
+            <% if r.approval == true %>
+              <td>承認済み</td>
+            <% elsif r.approval == false %>
+              <td class='now-request'>却下</td>
+            <% else %>
+              <td class="now-approving">承認中</td>
+            <% end %>
+            <td> <%= link_to '削除', request_path(r.id), method: :delete, class: "r-delete" %></td>
           </tr>
         <% end %>
     <% end %>

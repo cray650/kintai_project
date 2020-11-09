@@ -2,7 +2,7 @@ class Request < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :type
   belongs_to :user
-  has_one :time_card
+  has_one :time_card, dependent: :destroy
   accepts_nested_attributes_for :time_card, allow_destroy: true 
 
 

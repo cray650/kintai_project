@@ -1,0 +1,34 @@
+<h1>差戻申請</h1>
+<div class="edit-page">
+<%= form_with model: @request, local: true, method: :patch do |r| %>
+<div class="r-header">
+  <div class="r-type">
+    <p>申請区分</p>
+    <%= r.collection_select(:type_id, Type.all, :id, :name, {}, {class:"select-box", id:"type-status"}) %>
+  </div>
+  <%= r.fields_for :time_card do |i| %>
+    <div class="r-day">
+      <p>申請適用日</p>
+      <%= i.text_field :year, placeholder:"年" %>
+      <%= i.text_field :month, placeholder:"月" %>
+      <%= i.text_field :day, placeholder:"日" %>
+    </div>
+    <div class="r-in">
+      <p>出勤時刻</p>
+      <%= i.time_field :in %>
+    </div>
+    <div class="r-out">
+      <p>退勤時刻</p>
+      <%= i.time_field :out %>
+    </div>
+    <%= i.hidden_field :user_id, value: current_user.id %>
+  <% end %>
+  <div class="r-comment">
+    <p>事由</p>
+    <%= r.text_field :reason %>
+  </div>
+  <div>
+    <%= r.submit "変更" %>
+  </div>
+</div>
+<% end %>
