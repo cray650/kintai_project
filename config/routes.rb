@@ -31,4 +31,9 @@ Rails.application.routes.draw do
     resources :users
   end
 
+  resources :salaries
+  namespace :admin do
+    resources :salaries
+  end
+
 end

@@ -1,5 +1,6 @@
 class Admin::RequestsController < ApplicationController
   before_action :set_request, only: [:edit, :update]
+  before_action :if_not_admin, only: [:index, :edit]
 
   def index
     @requests = Request.all.order(created_at: "ASC")
@@ -24,6 +25,10 @@ class Admin::RequestsController < ApplicationController
 
   def set_request
     @request = Request.find(params[:id])
+  end
+
+  def if_not_admin
+    redirect_to root_path unless current_user.admin?
   end
 
 end

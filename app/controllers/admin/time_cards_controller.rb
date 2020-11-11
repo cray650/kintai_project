@@ -4,6 +4,7 @@ class Admin::TimeCardsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :index]
   before_action :today, only: [:index, :new, :edit]
   before_action :move_to_index, only: :edit
+  before_action :if_not_admin, only: [:index, :new, :edit]
 
   def index
     @requests = Request.includes(:time_card)
@@ -54,13 +55,13 @@ class Admin::TimeCardsController < ApplicationController
     @time = Time.zone.now
     @time_cards =TimeCard.all
   end
-
+  
   def set_time_card
     @time_card = TimeCard.find(params[:id])
   end
 
   def move_to_index
-    redirect_to unless current_user.id == @time_card.user_id
+    redirect_to root_path unless current_user.id == @time_card.user_id
   end
 
   def if_not_admin

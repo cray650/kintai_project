@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_11_09_081212) do
     t.integer "day", null: false
     t.datetime "in"
     t.datetime "out"
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "request_id"
