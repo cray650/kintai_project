@@ -4,9 +4,9 @@ class TimeCard < ApplicationRecord
 
 
   with_options presence: true, format: { with: /\A[0-9]+\z/, message: '半角数字を使用してください。'} do 
-    validates :year
-    validates :month
-    validates :day
+    validates :year,  length: { maximum: 4}, numericality: { greater_than_or_equal_to: 2020 }
+    validates :month, length: { maximum: 2}, numericality: { less_than_or_equal_to: 12 }
+    validates :day,   length: { maximum: 2}, numericality: { less_than_or_equal_to: 31 }
   end
 
   def self.today(current_user)
