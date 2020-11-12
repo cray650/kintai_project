@@ -20,25 +20,52 @@ describe TimeCard do
       it 'yearが半角数字以外であれば保存できない' do
         @time_card.year = 'aaaa'
         @time_card.valid?
-        expect(@time_card.errors.full_messages).to include('Year ')
+        expect(@time_card.errors.full_messages).to include("Year is not a number")
       end
       it 'yearが2020年以前であれば保存できない' do
+        @time_card.year = '2019'
+        @time_card.valid?
+        expect(@time_card.errors.full_messages).to include("Year must be greater than or equal to 2020")
       end
       it 'monthが空であれば保存できない' do
+        @time_card.month = ''
+        @time_card.valid?
+        expect(@time_card.errors.full_messages).to include(" Month  can't be blank ", "Month is not a number")
       end
       it 'monthが半角数字以外であれば保存できない' do
+        @time_card.month = 'aa'
+        @time_card.valid?
+        expect(@time_card.errors.full_messages).to include("Month is not a number")
       end
       it 'monthが12以上であれば保存できない' do
+        @time_card.month = '20'
+        @time_card.valid?
+        expect(@time_card.errors.full_messages).to include( "Month must be less than or equal to 12")
       end
       it 'dayが空であれば保存できない' do
+        @time_card.day = ''
+        @time_card.valid?
+        expect(@time_card.errors.full_messages).to include(" Day  can't be blank ", "Day is not a number")
       end
       it 'dayが半角数字以外であれば保存できない' do
+        @time_card.day = 'aaa'
+        @time_card.valid?
+        expect(@time_card.errors.full_messages).to include("Day is not a number")
       end
       it 'dayが31以上であれば保存できない' do
+        @time_card.day = '40'
+        @time_card.valid?
+        expect(@time_card.errors.full_messages).to include( "Day must be less than or equal to 31")
       end
       it 'inが空であれば保存できない' do
+        @time_card.in = ''
+        @time_card.valid?
+        expect(@time_card.errors.full_messages).to include("User must exist")
       end
       it 'outが空であれば保存できない' do
+        @time_card.out = ''
+        @time_card.valid?
+        expect(@time_card.errors.full_messages).to include("User must exist")
       end
     end
   end

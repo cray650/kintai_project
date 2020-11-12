@@ -3,7 +3,8 @@ FactoryBot.define do
     year    { '2020'}
     month   {'11'}
     day     {'11'}
-    # {Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)}
-    out     {Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)}
+    #in      {Faker::Time.forward(days: 23, period: :morning) }
+    out     {Faker::Time.forward(days: 23, period: :morning) }
+    user_id {'999'}
   end
 end
