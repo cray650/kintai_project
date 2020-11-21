@@ -6,5 +6,6 @@ FactoryBot.define do
     email                   {Faker::Internet.email}
     password                {'1111aa'}
     password_confirmation   {password}
+    salary                  {Faker::Number.within(range: 2000000..10000000)}
   end
 end

@@ -13,9 +13,11 @@ Rails.application.routes.draw do
 
   root to: 'time_cards#new'
   resources :time_cards
+  
   namespace :admin do
     resources :time_cards
   end
+
   resources :requests
   namespace :admin do
     resources :requests

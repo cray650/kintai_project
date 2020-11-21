@@ -1,19 +1,15 @@
 class Admin::SalariesController < ApplicationController
-  def index
-    @salary = Salary.all
-  end
-
   def new
     @salary = Salary.new
   end
 
   def create
-    @salary = Salary.new
+    @salary = Salary.new(salary_params)
   end
 
   private
 
   def salary_params
-    params.require(:salary).permit(:salary)
+    params.require(:salary).permit(:salary).merge(user_id: current_user.id)
   end
 end
