@@ -9,8 +9,8 @@
         <th>氏名</th>
         <th>email</th>
         <th>権限</th>
-        <th>出勤状況</th>
         <th>給与</th>
+        <th>出勤状況</th>
       </tr>
     </thead>
     <tbody>
@@ -24,6 +24,7 @@
           <% else %>
             <td><%= "管理者ユーザー" %></td>
           <% end %>
+          <td><%= "#{u.salary}円" %></td>
           <% u.time_cards.each do |t| %>
             <% if t.day == @day && t.out.present? %>
               <td class="state-out">退社</td>
