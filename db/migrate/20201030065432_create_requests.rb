@@ -5,8 +5,8 @@ class CreateRequests < ActiveRecord::Migration[6.0]
       t.text        :reason,    null: false
       t.boolean     :approval
 
-      t.references  :user,    null: false, foreign_key: true
-      
+      t.references  :user, null: false, foreign_key: true
+
       t.timestamps
     end
   end

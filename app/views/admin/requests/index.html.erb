@@ -1,6 +1,6 @@
 <h1>未処理申請一覧</h1>
 <div>
-  <table border="1" class="r-table">
+  <table border="1" align="center" class="r-table">
     <thead>
       <tr>
       <th>申請者ID</th>
@@ -25,7 +25,7 @@
             <td><%= "#{(r.time_card.in).strftime("%H:%M")}" %></td>
             <td><%= "#{(r.time_card.out).strftime("%H:%M")}" %></td>
             <td><%= link_to '承認', edit_admin_request_path(r.id), method: :get %></td>
-            <td><a href="#">却下</a></td>
+            <td><%= link_to '却下', edit_admin_request_path(r.id), method: :get %></td>
           </tr>
         <% end %>
     <% end %>

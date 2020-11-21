@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_11_05_093503) do
     t.integer "day", null: false
     t.datetime "in"
     t.datetime "out"
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "request_id"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2020_11_05_093503) do
     t.string "lastname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.integer "salary", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

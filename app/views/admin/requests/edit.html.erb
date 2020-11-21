@@ -40,6 +40,7 @@
   <div>
     <%= r.hidden_field :approval, value: true %>
     <a><%= r.submit "承認" %></a>
-
+    <%= r.hidden_field :approval, value: false %>
+    <a><%= r.submit "却下" %></a>
   </div>
 <% end %>

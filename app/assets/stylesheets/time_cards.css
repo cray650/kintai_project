@@ -47,9 +47,10 @@ table{
   text-align: center;
   border-collapse: collapse;
   table-layout: fixed;
+  word-wrap: break-word;
 }
 .main-table{
-  width: 80%;
+  width: 80vw;
 }
 .header-table{
   width: 30%;
@@ -63,4 +64,37 @@ table{
 .now-request{
   color: white;
   background-color: red;
+  text-decoration: none;
+}
+ /* スマホ表示時 */
+ @media (max-width: 599px) {
+  .time{
+    font-weight: bold;
+  }
+  .circle-attend {
+    text-align: center;/*左右中央*/
+    width: 80%;
+    height: 80%;
+    line-height: 50%;
+    border-radius: 50%;
+    background: skyblue;
+    font-size: 50px;
+  }
+  .circle-attend a, .circle-leave a, .main-menu a{
+    text-decoration: none;
+    color: cadetblue;
+  }
+  .circle-leave {
+    text-align: center;/*左右中央*/
+    width: 80%;
+    height: 80%;
+    line-height: 50%;
+    border-radius: 50%;
+    background: orange;
+    font-size: 50px;
+    text-decoration: none;
+  }
+  .main-menu{
+    border: 1px solid lightgray;
+  }
 }

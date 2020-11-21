@@ -56,6 +56,15 @@
             <%= f.password_field :password_confirmation, autocomplete: "off", placeholder:"同じパスワードを入力して下さい" %>
           </div>
         </div>
+        <div class='field'>
+          <div class='field-label'>
+            <%= f.label :salary %>
+            <i>(半角数字のみ)</i>
+          </div>
+          <div class='field-input'>
+            <%= f.text_field :salary, id:"salary", placeholder:"(例)10000000"%>
+          </div>
+        </div>
         <div class='actions'>
           <%= f.submit "Create Account", class: 'btn'%>
         </div>
