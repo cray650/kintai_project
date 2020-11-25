@@ -17,7 +17,7 @@
       <% @users.each do |u| %>
         <tr>
           <td><%= "#{u.employee_id}" %></td>
-          <td><%= "#{u.firstname} #{u.lastname}" %></td>
+          <td><%= link_to "#{u.firstname} #{u.lastname}", admin_user_path(u.id), class:'user-list' %></td>
           <td><%= "#{u.email}" %></td>
           <% if u.admin == false %>
             <td><%= "一般ユーザー" %></td>

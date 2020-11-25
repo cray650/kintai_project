@@ -120,3 +120,6 @@
   background-color: lightgray;
   color: white;
 }
+.user-list{
+  text-decoration: none; 
+}
