@@ -24,7 +24,7 @@
           <% else %>
             <td><%= "管理者ユーザー" %></td>
           <% end %>
-          <td><%= "#{u.salary}円" %></td>
+          <td><%= "#{u.salary.to_s(:delimited, delimiter: ',')}円"  %></td>
           <% u.time_cards.each do |t| %>
             <% if t.day == @day && t.out.present? %>
               <td class="state-out">退社</td>
