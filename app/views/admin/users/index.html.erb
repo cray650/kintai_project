@@ -17,14 +17,14 @@
       <% @users.each do |u| %>
         <tr>
           <td><%= "#{u.employee_id}" %></td>
-          <td><%= "#{u.firstname} #{u.lastname}" %></td>
+          <td><%= link_to "#{u.firstname} #{u.lastname}", admin_user_path(u.id), class:'user-list' %></td>
           <td><%= "#{u.email}" %></td>
           <% if u.admin == false %>
             <td><%= "一般ユーザー" %></td>
           <% else %>
             <td><%= "管理者ユーザー" %></td>
           <% end %>
-          <td><%= "#{u.salary}円" %></td>
+          <td><%= "#{u.salary.to_s(:delimited, delimiter: ',')}円"  %></td>
           <% u.time_cards.each do |t| %>
             <% if t.day == @day && t.out.present? %>
               <td class="state-out">退社</td>
